@@ -1,0 +1,8 @@
+{
+    "domain": "ha_node_api",
+    "name": "ha_node_api",
+    "documentation": "https://github.com/shaonianzhentan/ha_node_api",
+    "requirements": [],
+    "dependencies": [],
+    "codeowners": []
+  }
