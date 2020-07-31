@@ -1,10 +1,7 @@
 import os, time, re, uuid, logging, json, datetime, threading, ctypes, inspect, socket
 from homeassistant.helpers.event import track_time_interval, async_call_later
 from homeassistant.components.http import HomeAssistantView
-
-# 获取IP
-def get_ip():
-    return socket.gethostbyname(socket.gethostname())
+from homeassistant.helpers.network import get_url
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -25,7 +22,7 @@ def setup(hass, config):
 
     外部接口【作者QQ：635147515】
     版本：''' + VERSION + '''
-    API地址：''' + 'http://' + get_ip() + ':8123' + URL + '''
+    API地址：''' + 'http://' + get_url(hass) + URL + '''
     项目地址：https://github.com/shaonianzhentan/ha_node_api
     
 -------------------------------------------------------------------''')
