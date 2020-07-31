@@ -14,6 +14,10 @@ module.exports = class {
         }
     }
 
+    log() {
+        console.log(new Date().toLocaleString(), ...arguments)
+    }
+
     set_state(entity_id, state) {
         return this.http({ type: 'set_state', entity_id, state })
     }
