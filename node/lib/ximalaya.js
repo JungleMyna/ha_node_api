@@ -368,7 +368,7 @@ module.exports = (api) => {
             // 获取VIP音频（带上VIP账号的cookie）
             fetch(`https://mpay.ximalaya.com/mobile/track/pay/${id}?device=pc&isBackend=false&_=1557457172754`, {
                 headers: {
-                    cookie: api.ximalaya_cookie
+                    cookie: api.config.ximalaya_cookie
                 }
             }
             ).then(res => res.json()).then(data => {
