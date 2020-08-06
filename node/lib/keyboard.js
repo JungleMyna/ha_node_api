@@ -3,6 +3,8 @@ const InputEvent = require('input-event');
 
 module.exports = function (api) {
     let dev_input = api.config.keyboard
+    if(!dev_input) return;
+
     api.log('开始监听：', dev_input)
     if (!fs.existsSync(dev_input)) return;
     const input = new InputEvent(dev_input);

@@ -1,8 +1,9 @@
+const fs = require('fs')
 const fetch = require('node-fetch')
+const YAML = require('yaml')
 
 module.exports = class {
-    constructor(config) {
-        this.config = config
+    constructor() {
         this.http = async (params) => {
             let res = await fetch(config.url, {
                 method: 'POST',
@@ -14,6 +15,13 @@ module.exports = class {
             this.log(res)
             return res
         }
+        this.read()
+    }
+
+    read() {
+        // 读取配置
+        const file = fs.readFileSync('./config.yaml', 'utf8')
+        this.config = YAML.parse(file)
     }
 
     log() {

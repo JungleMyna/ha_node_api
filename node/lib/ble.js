@@ -57,6 +57,8 @@ module.exports = function (api) {
     api = api
     // 读取URL
     let devices = api.config.ha_ble_home
+    if(!devices) return;
+
     let arr = []
     Object.keys(devices).forEach(k => {
         arr.push(new DeviceTracker({ device: k, mac: devices[k] }))
