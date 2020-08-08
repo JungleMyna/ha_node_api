@@ -5,6 +5,7 @@ const YAML = require('yaml')
 module.exports = class {
     constructor() {
         this.http = async (params) => {
+            let config = this.config
             let res = await fetch(config.url, {
                 method: 'POST',
                 body: JSON.stringify({

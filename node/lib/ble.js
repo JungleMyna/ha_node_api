@@ -2,12 +2,11 @@ const path = require('path')
 const fetch = require('node-fetch')
 const { PythonShell } = require('python-shell')
 
-let api = null
-
 // 蓝牙检测
 class DeviceTracker {
 
-    constructor({ device, mac }) {
+    constructor({ api, device, mac }) {
+        this.api = api
         this.device = device
         this.mac = mac
         console.log('设备：', device, '，MAC地址：', mac)
@@ -54,13 +53,12 @@ class DeviceTracker {
 }
 
 module.exports = function (api) {
-    api = api
     // 读取URL
     let devices = api.config.ha_ble_home
     if(!devices) return;
 
     let arr = []
     Object.keys(devices).forEach(k => {
-        arr.push(new DeviceTracker({ device: k, mac: devices[k] }))
+        arr.push(new DeviceTracker({ api, device: k, mac: devices[k] }))
     })
 }
