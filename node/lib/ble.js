@@ -20,7 +20,8 @@ class DeviceTracker {
     }
 
     update() {
-        this.api.log(`开始更新：`)
+        let { api } = this
+        api.log(`开始更新：`)
         PythonShell.run(path.resolve(__dirname, 'ble.py'), { args: [this.mac] }, (err, results) => {
             let time = 5000
             if (!err) {
@@ -43,8 +44,8 @@ class DeviceTracker {
                         // 如果没有检测到人，则计数加1
                         this.count += 1
                     }
-                } catch(ex){ 
-                    this.api.log(ex)
+                } catch (ex) {
+                    api.log(ex)
                 }
             } else {
                 console.log('出现错误：', err)
@@ -58,7 +59,7 @@ class DeviceTracker {
 module.exports = function (api) {
     // 读取URL
     let devices = api.config.ha_ble_home
-    if(!devices) return;
+    if (!devices) return;
 
     let arr = []
     Object.keys(devices).forEach(k => {
