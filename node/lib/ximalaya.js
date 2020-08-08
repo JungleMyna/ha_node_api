@@ -383,6 +383,10 @@ module.exports = (api) => {
                 res.end(JSON.stringify(body))
             })
     
+        }else if(url.indexOf('/reload') == 0){
+            // 重新读取配置
+            api.read()
+            res.end("ok")
         }
     }).listen(3002);
     console.log('开始监听：http://localhost:3002')
