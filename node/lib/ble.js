@@ -9,7 +9,7 @@ class DeviceTracker {
         this.api = api
         this.device = device
         this.mac = mac
-        console.log('设备：', device, '，MAC地址：', mac)
+        api.log('设备：', device, '，MAC地址：', mac)
         this.update()
     }
 
@@ -20,6 +20,7 @@ class DeviceTracker {
     }
 
     update() {
+        this.api.log(`开始更新：`)
         PythonShell.run(path.resolve(__dirname, 'ble.py'), { args: [this.mac] }, (err, results) => {
             let time = 5000
             if (!err) {
@@ -42,7 +43,9 @@ class DeviceTracker {
                         // 如果没有检测到人，则计数加1
                         this.count += 1
                     }
-                } catch{ }
+                } catch(ex){ 
+                    this.api.log(ex)
+                }
             } else {
                 console.log('出现错误：', err)
             }
