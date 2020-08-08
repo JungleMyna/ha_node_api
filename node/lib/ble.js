@@ -14,7 +14,7 @@ class DeviceTracker {
     }
 
     set_state(state) {
-        api.set_state(this.device, state).then(() => {
+        this.api.set_state(this.device, state).then(() => {
             console.log(new Date().toLocaleString(), this.device, state)
         })
     }
