@@ -21,7 +21,6 @@ class DeviceTracker {
 
     update() {
         let { api } = this
-        api.log(`开始更新：`)
         PythonShell.run(path.resolve(__dirname, 'ble.py'), { args: [this.mac] }, (err, results) => {
             let time = 5000
             if (!err) {

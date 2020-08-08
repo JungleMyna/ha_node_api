@@ -358,15 +358,14 @@ module.exports = (api) => {
     if(!api.config.ximalaya_cookie) return;
 
     http.createServer(function (req, res) {
-        console.log(req.url)
         let url = req.url
-        console.log(url)
+        api.log(url)
         if (url.indexOf('/id/') == 0) {
             res.writeHead(200, { "Content-Type": "application/json" });
             let id = url.replace('/id/', '')
-            console.log(id)
+            api.log(id)
             // 获取VIP音频（带上VIP账号的cookie）
-            fetch(`https://mpay.ximalaya.com/mobile/track/pay/${id}?device=pc&isBackend=false&_=1557457172754`, {
+            fetch(`https://mpay.ximalaya.com/mobile/track/pay/${id}?device=pc&isBackend=false&_=${Date.now()}`, {
                 headers: {
                     cookie: api.config.ximalaya_cookie
                 }
@@ -379,7 +378,7 @@ module.exports = (api) => {
                 } else {
                     body.data = getPayAudio(data)
                 }
-                console.log(body)
+                api.log(body)
                 res.end(JSON.stringify(body))
             })
     
