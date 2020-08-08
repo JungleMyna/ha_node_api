@@ -386,6 +386,8 @@ module.exports = (api) => {
             // 重新读取配置
             api.read()
             res.end("ok")
+        }else{
+            res.end('404')
         }
     }).listen(3002);
     api.log('开始监听：http://localhost:3002')
