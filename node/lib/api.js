@@ -22,7 +22,6 @@ module.exports = class {
         let port = link.port
         this.hass = new HomeAssistant({ host, port, token, ignoreCert: false });
         this.log(`连接成功【${url}】`)
-        console.log(this.hass)
     }
 
     log() {
@@ -34,8 +33,8 @@ module.exports = class {
         this.hass.states.get(arr[0], arr[1]).then(res => {
             res['state'] = state
             this.hass.states.update(arr[0], arr[1], res);
+            this.log(`【${entity_id}】更新状态【${state}】`)
         })
-        this.log(`【${entity_id}】更新状态【${state}】`)
     }
 
     fire(event_type, event_data) {
