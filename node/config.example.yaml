@@ -1,5 +1,5 @@
-url: http://192.168.1.113:8123/ha_node_api
-key: 这里放自定义的秘钥
+url: http://192.168.1.113:8123
+token: 这里放HA的token
 ha_ble_home:
   'person.xiaobai': 'A8:9C:ED:F0:E2:97'
 keyboard: '/dev/input/event3'

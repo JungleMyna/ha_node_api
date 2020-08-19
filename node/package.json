@@ -9,9 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "homeassistant": "^0.2.0",
+    "input-event": "^1.2.6",
     "node-fetch": "^2.6.0",
     "python-shell": "^1.0.8",
-    "input-event": "^1.2.6",
     "yaml": "^1.9.2"
   }
 }
