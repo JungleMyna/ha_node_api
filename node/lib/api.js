@@ -39,6 +39,6 @@ module.exports = class {
 
     fire(event_type, event_data) {
         this.hass.events.fire(event_type, event_data);
-        this.log(`事件名【${event_type}】事件参数【${event_data}】`)
+        this.log(`事件名【${event_type}】事件参数：`, event_data)
     }
 }

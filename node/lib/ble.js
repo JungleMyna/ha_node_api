@@ -1,5 +1,4 @@
 const path = require('path')
-const fetch = require('node-fetch')
 const { PythonShell } = require('python-shell')
 
 // 蓝牙检测
@@ -13,12 +12,8 @@ class DeviceTracker {
         this.update()
     }
 
-    set_state(state) {
-        this.api.set_state(this.device, state)
-    }
-
     update() {
-        let { api } = this
+        let { api, device } = this
         PythonShell.run(path.resolve(__dirname, 'ble.py'), { args: [this.mac] }, (err, results) => {
             let time = 5000
             if (!err) {
@@ -27,7 +22,7 @@ class DeviceTracker {
                     // console.log(obj)
                     if (obj.name) {
                         // 设置在家
-                        this.set_state('home')
+                        api.set_state(device, 'home')
                         this.count = 0
                         // 20秒检测
                         time = 20000
@@ -35,7 +30,7 @@ class DeviceTracker {
                         // 如果超过十次没有找到设备，则判断不在家
                         if (this.count > 10) {
                             // 设置不在家
-                            this.set_state('not_home')
+                            api.set_state(device, 'not_home')
                             this.count = 0
                         }
                         // 如果没有检测到人，则计数加1
