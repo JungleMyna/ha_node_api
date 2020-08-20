@@ -1,4 +1,5 @@
 const fs = require('fs')
+const _ = require('lodash');
 const InputEvent = require('input-event');
 
 module.exports = function (api) {
@@ -19,9 +20,9 @@ module.exports = function (api) {
         const keyboard = new InputEvent.Keyboard(input);
         //keyboard.on('keyup'   , console.log);
         //keyboard.on('keydown' , console.log);
-        keyboard.on('keypress', (data) => {
+        keyboard.on('keypress', _.throttle((data) => {
             api.log(data)
             api.fire('keyboard_remote_command_received', { index, key_code: data.code });
-        });
+        }), 500);
     })
 }
