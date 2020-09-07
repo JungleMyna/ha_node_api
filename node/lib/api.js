@@ -41,4 +41,9 @@ module.exports = class {
         this.hass.events.fire(event_type, event_data);
         this.log(`事件名【${event_type}】事件参数：`, event_data)
     }
+
+    callService(service, data) {
+        let arr = service.split('.')
+        this.hass.services.call(arr[1], arr[0], data)
+    }
 }

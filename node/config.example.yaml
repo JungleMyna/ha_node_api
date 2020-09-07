@@ -4,3 +4,6 @@ ha_ble_home:
   'person.xiaobai': 'A8:9C:ED:F0:E2:97'
 keyboard: '/dev/input/event3'
 ximalaya_cookie: '这里放喜马拉雅的登录cookie'
+xiaomi:
+  user: 账号
+  password: 密码

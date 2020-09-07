@@ -9,3 +9,6 @@ keyboard(api)
 // 喜马拉雅VIP解析服务
 const ximalaya = require('./lib/ximalaya')
 ximalaya(api)
+// 小米
+const xiaomi = require('./lib/xiaomi')
+xiaomi(api)
