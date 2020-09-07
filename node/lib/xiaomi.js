@@ -29,12 +29,12 @@ module.exports = async function (api) {
             let { timestamp, recordGroup } = records[0]
             const data = JSON.parse(recordGroup)
             const text = data.user.content
-            api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
+            // api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
             // 当前时间减3秒
             let today = new Date()
             let ts = today.setSeconds(today.getSeconds() - 3)
             if (ts < timestamp) {
-                api.log('发送给HA')
+                api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
                 api.callService('conversation.process', {
                     text, source: 'xiaomi'
                 })
