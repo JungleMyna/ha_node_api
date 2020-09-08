@@ -28,6 +28,11 @@ module.exports = class {
         console.log(new Date().toLocaleString(), ...arguments)
     }
 
+    getState(entity_id) {
+        let arr = entity_id.split('.')
+        return this.hass.states.get(arr[0], arr[1])
+    }
+
     set_state(entity_id, state) {
         let arr = entity_id.split('.')
         this.hass.states.get(arr[0], arr[1]).then(res => {
