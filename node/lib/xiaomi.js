@@ -39,7 +39,7 @@ module.exports = async function (api) {
             let { timestamp, recordGroup } = recordsObj
             const data = JSON.parse(recordGroup)
             const text = data.user.content
-            api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
+            // api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
             // 获取当前
             let today = new Date()
             let ts = today.setSeconds(today.getSeconds() - 60)
@@ -53,6 +53,7 @@ module.exports = async function (api) {
                 // 当时间不一致时，则触发事件
                 if (attributes['timestamp'] != timestamp) {
                     api.log(`发送到HA`)
+                    api.log(`${text}【${new Date(timestamp).toLocaleString()}】`)
                     // 发送命令
                     api.callService('conversation.process', {
                         text,
