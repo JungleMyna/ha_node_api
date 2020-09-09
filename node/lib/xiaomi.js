@@ -65,7 +65,7 @@ module.exports = async function (api) {
                 // 递归轮询消息
                 setTimeout(() => {
                     getVoiceText()
-                }, 1000)
+                }, 2000)
             })
         }
 
